@@ -99,19 +99,14 @@ class SmartAttributedString
         mutableAttributedString.appendAttributedString(attrString);
     }
     
-    func add(let string : NSString , let closure : ((SmartAttributedString)->())? = nil)->SmartAttributedString
+    func add( string : NSString ,  closure : ((SmartAttributedString)->())? = nil)->SmartAttributedString
     {
         self.appendAttributedString(NSAttributedString(string: string as String))
-        
-        if let theClosure = closure {
-            
-            theClosure(self)
-        }
-        
+        closure?(self)
         return self
     }
     
-    func color(let color : UIColor,range : NSRange? = nil)->SmartAttributedString
+    func color( color : UIColor,range : NSRange? = nil)->SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: theRange)
@@ -182,7 +177,7 @@ class SmartAttributedString
         return self
     }
     
-    func backgroundColor(let color : UIColor, range : NSRange? = nil)->SmartAttributedString
+    func backgroundColor( color : UIColor, range : NSRange? = nil)->SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
@@ -220,7 +215,7 @@ class SmartAttributedString
         return nil
     }
     
-    func font(let font : UIFont,range : NSRange? = nil)->SmartAttributedString
+    func font( font : UIFont,range : NSRange? = nil)->SmartAttributedString
     {
         if let aRange = self.getValidRange(range) {
             mutableAttributedString.addAttribute(NSFontAttributeName, value: font, range: aRange)
