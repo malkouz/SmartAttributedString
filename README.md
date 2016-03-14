@@ -4,7 +4,7 @@
 ## Usage
 
 
-A simple case 
+### A simple case 
 
 ```swift
     let smartString = SmartAttributedString()
@@ -13,16 +13,17 @@ A simple case
     self.label.attributedText = smartString.attributedString
 ```
 
+### More Complex
 
 So you need an attributed string , with "Red" written in red letters and "Green" written in green letters with differing fonts and underline colors ?
 
 Here you go !
 
 ```swift
-    let smartString = SmartAttributedString()
-    smartString.add("Red").color(UIColor.redColor()).underline(UIColor.redColor())
-    smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
-    self.label.attributedText = smartString.attributedString
+let smartString = SmartAttributedString()
+smartString.add("Red").color(UIColor.redColor()).underline(UIColor.redColor())
+smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
+self.label.attributedText = smartString.attributedString
 ```
 
 ![Example](/example.png)
