@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             $0.font(UIFont.boldSystemFontOfSize(14))
             $0.strikethrough(UIColor.blueColor())
         }
-
+        
         
        self.centerLabel.attributedText = smartString.attributedString
 
