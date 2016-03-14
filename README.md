@@ -19,10 +19,10 @@ Here you go !
 This is more convenient when you're creating the string instead of formatting an existing string.
 
 ## TODO :
-- [] Better API for controlling line spacing and other paragraph attributes.
-- [] Add a project and test target.
-- [] Embed in a framework.
-- [] More representative example application.
-- [] OS X support.
-- [] Carthage support.
-- [] CocoaPod support.  
+- [ ] Better API for controlling line spacing and other paragraph attributes.
+- [ ] Add a project and test target.
+- [ ] Embed in a framework.
+- [ ] More representative example application.
+- [ ] OS X support.
+- [ ] Carthage support.
+- [ ] CocoaPod support.  
