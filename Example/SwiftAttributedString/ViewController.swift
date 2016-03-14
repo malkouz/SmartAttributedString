@@ -14,8 +14,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let smartString = SmartAttributedString()
-        smartString.add("Red").color(UIColor.redColor()).underline(UIColor.redColor())
-        smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
+        smartString.add("Red") {
+            $0.color(UIColor.redColor())
+            $0.font( UIFont.boldSystemFontOfSize(13))
+        }
+        
+        smartString.add("Green") {
+            $0.color(UIColor.greenColor())
+            $0.font(UIFont.boldSystemFontOfSize(14))
+            $0.strikethrough(UIColor.blueColor())
+        }
 
         
        self.centerLabel.attributedText = smartString.attributedString

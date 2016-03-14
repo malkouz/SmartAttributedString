@@ -6,6 +6,8 @@
 
 ### A simple case 
 
+A fluent interface can be used in simple cases
+
 ```swift
     let smartString = SmartAttributedString()
     smartString.add("Bold").font(UIFont.boldSystemFontOfSize(14))
@@ -19,11 +21,23 @@ So you need an attributed string , with "Red" written in red letters and "Green"
 
 Here you go !
 
+A closure based interface can be used for more complex cases
+
 ```swift
-let smartString = SmartAttributedString()
-smartString.add("Red").color(UIColor.redColor()).underline(UIColor.redColor())
-smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
-self.label.attributedText = smartString.attributedString
+	let smartString = SmartAttributedString()
+	smartString.add("Red") {
+	    $0.color(UIColor.redColor())
+	    $0.font( UIFont.boldSystemFontOfSize(13))
+	}
+
+	smartString.add("Green") {
+	    $0.color(UIColor.greenColor())
+	    $0.font(UIFont.boldSystemFontOfSize(14))
+	    $0.strikethrough(UIColor.blueColor())
+	}
+
+
+	self.centerLabel.attributedText = smartString.attributedString
 ```
 
 ![Example](/example.png)
