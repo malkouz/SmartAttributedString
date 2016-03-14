@@ -78,20 +78,20 @@ extension NSMutableParagraphStyle
 class SmartAttributedString
 {
     var lastRange : NSRange?
-    var mutableAttributedString : NSMutableAttributedString
+    var attributedString : NSMutableAttributedString
     
     
     init()
     {
-        mutableAttributedString = NSMutableAttributedString()
+        attributedString = NSMutableAttributedString()
     }
     
     
     func appendAttributedString(attrString: NSAttributedString)
     {
-        lastRange = NSMakeRange(mutableAttributedString.string.characters.count
+        lastRange = NSMakeRange(attributedString.string.characters.count
             , attrString.string.characters.count)
-        mutableAttributedString.appendAttributedString(attrString);
+        attributedString.appendAttributedString(attrString);
     }
     
     func add(let string : NSString)->SmartAttributedString
@@ -103,7 +103,7 @@ class SmartAttributedString
     func color(let color : UIColor,range : NSRange? = nil)->SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
-            mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: theRange)
+            attributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: theRange)
         }
         return self
     }
@@ -112,10 +112,10 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(bool: true), range: theRange)
+            attributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(bool: true), range: theRange)
             
             if let theColor = color {
-                mutableAttributedString.addAttribute(NSStrikethroughColorAttributeName, value: theColor, range: theRange)
+                attributedString.addAttribute(NSStrikethroughColorAttributeName, value: theColor, range: theRange)
             }
         }
         return self
@@ -126,7 +126,7 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(NSKernAttributeName, value: NSNumber(double: kerning), range: theRange)
+            attributedString.addAttribute(NSKernAttributeName, value: NSNumber(double: kerning), range: theRange)
         }
         return self
         
@@ -136,7 +136,7 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(kCTSuperscriptAttributeName as String, value: NSNumber(int: 1), range: theRange)
+            attributedString.addAttribute(kCTSuperscriptAttributeName as String, value: NSNumber(int: 1), range: theRange)
         }
         return self
         
@@ -146,7 +146,7 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(kCTSuperscriptAttributeName as String, value: NSNumber(int: -1), range: theRange)
+            attributedString.addAttribute(kCTSuperscriptAttributeName as String, value: NSNumber(int: -1), range: theRange)
         }
         return self
         
@@ -156,7 +156,7 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(NSBaselineOffsetAttributeName, value: NSNumber(double: offset), range: theRange)
+            attributedString.addAttribute(NSBaselineOffsetAttributeName, value: NSNumber(double: offset), range: theRange)
         }
         return self
         
@@ -166,7 +166,7 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: theRange)
+            attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: theRange)
         }
         return self
     }
@@ -175,7 +175,7 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(NSBackgroundColorAttributeName, value: color, range: theRange)
+            attributedString.addAttribute(NSBackgroundColorAttributeName, value: color, range: theRange)
         }
         return self
     }
@@ -184,10 +184,10 @@ class SmartAttributedString
     {
         if let theRange = self.getValidRange(range) {
             
-            mutableAttributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(bool: true), range: theRange)
+            attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(bool: true), range: theRange)
             
             if let theColor = color {
-                mutableAttributedString.addAttribute(NSUnderlineColorAttributeName, value: theColor, range: theRange)
+                attributedString.addAttribute(NSUnderlineColorAttributeName, value: theColor, range: theRange)
             }
             
         }
@@ -212,7 +212,7 @@ class SmartAttributedString
     func font(let font : UIFont,range : NSRange? = nil)->SmartAttributedString
     {
         if let aRange = self.getValidRange(range) {
-            mutableAttributedString.addAttribute(NSFontAttributeName, value: font, range: aRange)
+            attributedString.addAttribute(NSFontAttributeName, value: font, range: aRange)
         }
         
         return self

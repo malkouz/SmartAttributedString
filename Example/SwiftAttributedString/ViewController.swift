@@ -18,9 +18,8 @@ class ViewController: UIViewController {
         smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
 
         
-       self.centerLabel.attributedText = smartString.mutableAttributedString
+       self.centerLabel.attributedText = smartString.attributedString
 
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {

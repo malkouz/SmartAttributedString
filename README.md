@@ -2,16 +2,27 @@
 ## SmartAttributedString -  A convenient way to create NSAttributedStrings
 
 ## Usage
+
+
+A simple case 
+
+```swift
+    let smartString = SmartAttributedString()
+    smartString.add("Bold").font(UIFont.boldSystemFontOfSize(14))
+    smartString.add("Normal").font(UIFont.systemFontOfSize(13))
+    self.label.attributedText = smartString.attributedString
+```
+
+
 So you need an attributed string , with "Red" written in red letters and "Green" written in green letters with differing fonts and underline colors ?
 
 Here you go !
 
 ```swift
-        let smartString = SmartAttributedString()
-        smartString.add("Red").color(UIColor.redColor()).underline(UIColor.redColor())
-        smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
-        self.label.attributedText = smartString.mutableAttributedString
-}
+    let smartString = SmartAttributedString()
+    smartString.add("Red").color(UIColor.redColor()).underline(UIColor.redColor())
+    smartString.add("Green").color(UIColor.greenColor()).font(UIFont.boldSystemFontOfSize(14)).strikethrough(UIColor.blueColor())
+    self.label.attributedText = smartString.attributedString
 ```
 
 ![Example](/example.png)
