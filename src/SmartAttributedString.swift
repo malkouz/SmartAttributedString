@@ -71,8 +71,6 @@ extension NSMutableParagraphStyle
         self.paragraphSpacingBefore = before
         return self
     }
-    
-    
 }
 
 class SmartAttributedString
@@ -86,11 +84,35 @@ class SmartAttributedString
         return mutableAttributedString
     }
     
+      // MARK: Init Methods
     init()
     {
-        mutableAttributedString = NSMutableAttributedString()
+         mutableAttributedString = NSMutableAttributedString()
     }
     
+    init(string:String)
+    {
+        mutableAttributedString = NSMutableAttributedString(string:string)
+        lastRange = NSMakeRange(0
+            ,mutableAttributedString.string.characters.count)
+    }
+    
+    init(attributedString:NSAttributedString)
+    {
+        mutableAttributedString = NSMutableAttributedString(attributedString:attributedString)
+        lastRange = NSMakeRange(0
+            ,mutableAttributedString.string.characters.count)
+    }
+    
+    init(string:String,attributes:[String : AnyObject]?)
+    {
+        mutableAttributedString = NSMutableAttributedString(string:string,attributes:attributes)
+        lastRange = NSMakeRange(0
+            ,mutableAttributedString.string.characters.count)
+    }
+    
+    // MARK: Init Methods End
+
     
     func appendAttributedString(attrString: NSAttributedString)
     {
@@ -223,6 +245,20 @@ class SmartAttributedString
         
         return self
     }
-    
-    
+ 
+}
+
+extension SmartAttributedString
+{
+    convenience init(htmlString:String) throws {
+        
+        self.init()
+        guard let data = htmlString.dataUsingEncoding(NSUTF8StringEncoding) else {
+            throw NSError(domain: "Invalid HTML", code: -500, userInfo: nil)
+        }
+        
+        let options = [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSNumber(unsignedInteger:NSUTF8StringEncoding)]
+        mutableAttributedString =  try NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+        lastRange = NSMakeRange(0, mutableAttributedString.string.characters.count)
+    }
 }
